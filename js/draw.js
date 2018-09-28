@@ -4,7 +4,20 @@ var USER_SEX = "2",
     USER_AGEGRP = "2";
 
 var category_colors = {
-    // TODO implement this based on what we did in class
+    "MARRIED": "#5D7EE6",
+    "OWN CHILDREN IN HOUSEHOLD": "#DFD041",
+    "HAS HEALTHCARE COVERAGE": "#39CEF4",
+    "BACHELOR'S DEGREE OR MORE": "#F97F33",
+    "EMPLOYED": "#D441A2",
+    "SELF-EMPLOYED*": "#C27F25",
+    "PRIMARILY PUB. TRANS. TO WORK*": "#E04364",
+    "PERSONAL INCOME ABOVE NAT. MED.": "#5EB731",
+    "BELOW POVERTY LINE": "#555555",
+    "VETERAN": "#B092CE",
+    "BORN OUTSIDE US": "#BCC641",
+    "COG. OR PHYS. DIFFICULTY": "#EC7C9C",
+    "HEARING OR VIS. DIFFICULTY": "#F09AB3",
+    "WIDOWED": "#23D8A0"
 }
 
 $(document).ready(function () {
