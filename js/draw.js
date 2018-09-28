@@ -12,16 +12,22 @@ $(document).ready(function () {
     wireButtonClickEvents();
 });
 
-// Loads the CSV file 
+// Loads the CSV file
 function loadData() {
-    // load the demographics.csv file    
+    // load the demographics.csv file
+    d3.csv("data/demographics.csv", function (d){
+      data = d;
+      data.forEach(function (item){
+        item.n = parseInt(item.n);
+      });
+    });
     // assign it to the data variable, and call the visualize function by first filtering the data
     // call the visualization function by first findingDataItem
 }
 
 // Finds the dataitem that corresponds to USER_SEX + USER_RACESIMP + USER_AGEGRP variable values
 function findDataItem() {
-    // you will find the SINGLE item in "data" array that corresponds to 
+    // you will find the SINGLE item in "data" array that corresponds to
     //the USER_SEX (sex), USER_RACESIMP (racesimp), and USER_AGEGRP(agegrp) variable values
 
 
@@ -39,12 +45,12 @@ function visualizeSquareChart(item) {
 
     //HINT: you will iterate through the category_colors variable and draw a square chart for each item
     //var fields = d3.keys(category_colors)
-    //fields.forEach ... 
+    //fields.forEach ...
 
 
 
 
-    // Update the count div whose id is "n" with item.total    
+    // Update the count div whose id is "n" with item.total
 
 
 
@@ -54,7 +60,7 @@ function visualizeSquareChart(item) {
 
 //EXTRA CREDITS
 function wireButtonClickEvents() {
-    // We have three groups of button, each sets one variable value. 
+    // We have three groups of button, each sets one variable value.
     //The first one is done for you. Try to implement it for the other two groups
 
     //SEX
