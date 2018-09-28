@@ -32,11 +32,16 @@ function findDataItem() {
 
 
     //HINT: uncomment and COMPLETE the below lines of code
-    //var item = data.filter(function (d) { // WHAT GOES HERE?});
-    //if (item.length == 1) {
-    //    return item[0];
-    //}
-    //return null;
+    var item = data.filter(function (d) {
+      //WHAT GOES HERE
+      if(d.sex == USER_SEX && d.racesimp == USER_RACESIMP && d.agegrp == USER_AGEGRP){
+        return d;
+      }
+    });
+    if (item.length == 1) {
+       return item[0];
+    }
+    return null;
 }
 
 //Pass a single dataitem to this function by first calling findDataItem. visualizes square chart
