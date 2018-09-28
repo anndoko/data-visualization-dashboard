@@ -35,14 +35,15 @@ function loadData() {
       });
     });
     // assign it to the data variable, and call the visualize function by first filtering the data
+    var dataitem = findDataItem();
     // call the visualization function by first findingDataItem
+    visualizeSquareChart(dataitem);
 }
 
 // Finds the dataitem that corresponds to USER_SEX + USER_RACESIMP + USER_AGEGRP variable values
 function findDataItem() {
     // you will find the SINGLE item in "data" array that corresponds to
     //the USER_SEX (sex), USER_RACESIMP (racesimp), and USER_AGEGRP(agegrp) variable values
-
 
     //HINT: uncomment and COMPLETE the below lines of code
     var item = data.filter(function (d) {
@@ -58,20 +59,49 @@ function findDataItem() {
 }
 
 //Pass a single dataitem to this function by first calling findDataItem. visualizes square chart
-function visualizeSquareChart(item) {
+function visualizeSquareChart(dataitem) {
     // visualize the square plot per attribute in the category_color variable
+
 
     //HINT: you will iterate through the category_colors variable and draw a square chart for each item
     //var fields = d3.keys(category_colors)
     //fields.forEach ...
 
+    // ???
+    var fields = d3.keys(category_colors)
 
+    fields.forEach(function (v, i){
 
+        // ** code from lab 3: draw a grid of 10*10
+        var svg = d3.select("#chart1")
+          .append("svg").attr("width", 280).attr("height", 280);
+
+        var rectWidth = 20;
+
+        var rows = svg.selectAll(".row")
+          .data(d3.range(10))
+          .enter()
+          .append("g")
+          .attr("class", "row")
+          .attr("transform", function(d, i) {
+            return "translate(0," + (rectWidth * i) + ")";
+          });
+
+        var rects = rows.selectAll("rect")
+          .data(d3.range(10))
+          .enter()
+          .append("rect")
+          .attr("class", "rect")
+          .attr("x", function(d, i) {
+            return rectWidth * i;
+            console.log(d);
+          })
+          .attr("height", rectWidth)
+          .attr("width", rectWidth)
+          .attr("stroke", "white");
+    });
 
     // Update the count div whose id is "n" with item.total
-
-
-
 
 }
 
