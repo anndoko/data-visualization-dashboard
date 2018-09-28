@@ -61,20 +61,26 @@ function findDataItem() {
 //Pass a single dataitem to this function by first calling findDataItem. visualizes square chart
 function visualizeSquareChart(dataitem) {
     // visualize the square plot per attribute in the category_color variable
-
+    // code for Q16 goes here
 
     //HINT: you will iterate through the category_colors variable and draw a square chart for each item
-    //var fields = d3.keys(category_colors)
-    //fields.forEach ...
-
-    // ???
     var fields = d3.keys(category_colors)
 
     fields.forEach(function (v, i){
 
-        // ** code from lab 3: draw a grid of 10*10
+        // Print heading
+        var div = d3.select("#chart1")
+          .append("div")
+          .attr("id", "holder" + v)
+          .attr("class", "chartholder");
+
+        div.append("span").html(v);
+
+        // ** draw a grid of 10*10
         var svg = d3.select("#chart1")
-          .append("svg").attr("width", 280).attr("height", 280);
+          .append("svg")
+          .attr("width", 280)
+          .attr("height", 280);
 
         var rectWidth = 20;
 
