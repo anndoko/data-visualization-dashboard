@@ -130,7 +130,7 @@ function visualizeSquareChart(dataitem) {
     });
 
     // Update the count div whose id is "n" with item.total
-
+    d3.select("#n").text(dataitem.total);
 }
 
 
