@@ -65,18 +65,20 @@ function visualizeSquareChart(dataitem) {
 
     //HINT: you will iterate through the category_colors variable and draw a square chart for each item
     var fields = d3.keys(category_colors)
+    var colors = d3.values(category_colors)
 
     fields.forEach(function (v, i){
 
-        // Print heading
+        // Draw the div wrapper
         var div = d3.select("#chart1")
           .append("div")
           .attr("id", "holder" + v)
           .attr("class", "chartholder");
 
-        div.append("span").html(v);
+        // Print the category name
+        div.append("h6").html(v + colors[i]);
 
-        // ** draw a grid of 10*10
+        // Draw the svg (empty)
         var svg = d3.select("#chart1")
           .append("svg")
           .attr("width", 280)
@@ -84,27 +86,16 @@ function visualizeSquareChart(dataitem) {
 
         var rectWidth = 20;
 
-        var rows = svg.selectAll(".row")
-          .data(d3.range(10))
-          .enter()
-          .append("g")
-          .attr("class", "row")
-          .attr("transform", function(d, i) {
-            return "translate(0," + (rectWidth * i) + ")";
-          });
-
-        var rects = rows.selectAll("rect")
-          .data(d3.range(10))
-          .enter()
-          .append("rect")
-          .attr("class", "rect")
-          .attr("x", function(d, i) {
-            return rectWidth * i;
-            console.log(d);
-          })
-          .attr("height", rectWidth)
-          .attr("width", rectWidth)
-          .attr("stroke", "white");
+        svg.selectAll("rect")
+        .data(d3.range(100))
+        .enter()
+        .append("rect")
+        .attr("width", 5)
+        .attr("height", 5)
+        .attr("x", function(d, i) {return i})
+        .attr("y", function(d, i) {return i})
+        .attr("fill", colors[i])
+        .attr("stroke", "white");
     });
 
     // Update the count div whose id is "n" with item.total
