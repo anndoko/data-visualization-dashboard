@@ -20,7 +20,7 @@ var category_colors = {
   "WIDOWED": "#23D8A0"
 }
 
-var columns = {
+var column_names = {
   "MARRIED": "married",
   "OWN CHILDREN IN HOUSEHOLD": "children",
   "HAS HEALTHCARE COVERAGE": "healthcare",
@@ -80,9 +80,11 @@ function visualizeSquareChart(dataitem) {
     //HINT: you will iterate through the category_colors variable and draw a square chart for each item
     var fields = d3.keys(category_colors)
     var colors = d3.values(category_colors)
+    var columns = d3.values(column_names)
 
-    fields.forEach(function (v){
-
+    fields.forEach(function (v, i){
+        var column = columns[i]
+        var value = dataitem[column]
         // Draw the div wrapper
         var div = d3.select("#chart1")
           .append("div")
@@ -95,8 +97,8 @@ function visualizeSquareChart(dataitem) {
         // Draw the svg (empty)
         var svg = d3.select("#chart1")
           .append("svg")
-          .attr("width", 280)
-          .attr("height", 280);
+          .attr("width", 200)
+          .attr("height", 200);
 
         var rectWidth = 20;
 
@@ -104,15 +106,29 @@ function visualizeSquareChart(dataitem) {
         .data(d3.range(100))
         .enter()
         .append("rect")
-        .attr("width", 5)
-        .attr("height", 5)
-        .attr("fill", colors[v])
-        .attr("x", function(d, i) {return i})
-        .attr("y", function(d, i) {return i})
+        .attr("width", rectWidth)
+        .attr("height", rectWidth)
+        .attr("fill", function(d){
+            if ((d + 1) > (100 - value)){
+              return colors[i];
+            }
+            else {
+              return "#E0E0E0";
+            }
+        })
+        .attr("x", function(d, i) {return i%10*rectWidth})
+        .attr("y", function(d, i) {
+          if (i < 9){
+            return 0;
+          }
+          else {
+            return (Math.floor(i/10))*20;
+          }
+          //return i
+        })
         .attr("stroke", "white");
     });
-    
-    // dataitem["agegrp"]
+
     // Update the count div whose id is "n" with item.total
 
 }
