@@ -90,7 +90,7 @@ function visualizeSquareChart(dataitem) {
           .append("div")
           .attr("id", "holder" + v)
           .attr("class", "chartholder")
-          .attr("style","float: left; margin: 0px 0px 16px;");
+          .attr("style","float: left; margin: 24px 24px 16px;");
 
         // Print the category name
         div.append("h6").html(v)
