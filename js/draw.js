@@ -89,20 +89,27 @@ function visualizeSquareChart(dataitem) {
         var div = d3.select("#chart1")
           .append("div")
           .attr("id", "holder" + v)
-          .attr("class", "chartholder");
+          .attr("class", "chartholder")
+          .attr("style","float: left; margin: 0px 0px 16px;");
 
         // Print the category name
-        div.append("h6").html(v);
+        div.append("h6").html(v)
+        .attr("style", "width: 128px; height: 16px; text-align: left; line-height: 16px");
 
         // Draw the svg (empty)
-        var svg = d3.select("#chart1")
-          .append("svg")
-          .attr("width", 200)
-          .attr("height", 200);
+        var svg = div.append("svg")
+          .attr("display", "inline-block")
+          .attr("width", 132)
+          .attr("height", 152)
+          .append("g");
 
-        var rectWidth = 20;
+        var rectWidth = 12.3;
 
-        svg.selectAll("rect")
+        var cell = svg.selectAll(".cell")
+        .enter()
+        .attr("class", "cell");
+
+        cell.append("rect")
         .data(d3.range(100))
         .enter()
         .append("rect")
@@ -122,9 +129,8 @@ function visualizeSquareChart(dataitem) {
             return 0;
           }
           else {
-            return (Math.floor(i/10))*20;
+            return (Math.floor(i/10))*rectWidth;
           }
-          //return i
         })
         .attr("stroke", "white");
     });
