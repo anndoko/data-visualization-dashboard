@@ -151,10 +151,27 @@ function wireButtonClickEvents() {
         d3.select("#sex .current").classed("current", false);
         d3.select(this).classed("current", true);
         $("#chart1").empty();
-        // TODO: find the data item and invoke the visualization function
+        // find the data item and invoke the visualization function
+        visualizeSquareChart(findDataItem());
     });
     // RACE
+    d3.selectAll("#racesimp .button").on("click", function () {
+        USER_RACESIMP = d3.select(this).attr("data-val");
+        d3.select("#racesimp .current").classed("current", false);
+        d3.select(this).classed("current", true);
+        $("#chart1").empty();
+        // find the data item and invoke the visualization function
+        visualizeSquareChart(findDataItem());
+    });
 
     //AGEGROUP
+    d3.selectAll("#agegrp .button").on("click", function () {
+        USER_AGEGRP = d3.select(this).attr("data-val");
+        d3.select("#agegrp .current").classed("current", false);
+        d3.select(this).classed("current", true);
+        $("#chart1").empty();
+        // find the data item and invoke the visualization function
+        visualizeSquareChart(findDataItem());
+    });
 
 }
